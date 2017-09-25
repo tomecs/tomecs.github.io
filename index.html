@@ -293,71 +293,85 @@
       
         
           
-            <h3 id="父类"><a href="#父类" class="headerlink" title="父类"></a>父类</h3><p><code>bash
-    public class Father {
-        public Father() {
-            System.out.println(&quot;father&quot;);
-        }
-        {
-            System.out.println(&quot;father class method block! 1  &quot;);
-        }
-        static {
-            System.out.println(&quot;father class static method block!&quot;);
-        }
-        {
-            System.out.println(&quot;father class method block! 2    &quot;);
-        }
-        public static void test() {
-            System.out.println(&quot;Father!&quot;);
-        }
-    }</code> bash</p>
-<h3 id="子类"><a href="#子类" class="headerlink" title="子类"></a>子类</h3><p>``` bash<br>    public class Son extends Father implements Cloneable, Serializable{<br>        {<br>            System.out.println(“son class method block! 1  “);<br>        }<br>        static {<br>            System.out.println(“son class static method block!”);<br>        }<br>        {<br>            System.out.println(“son class method block! 2    “);<br>        }<br>        public Son() {<br>            super();<br>            System.out.println(“Son!”);<br>        }</p>
-<pre><code>    public static void test() {
-        System.out.println(&quot;Son!&quot;);
+            <h3 id="父类"><a href="#父类" class="headerlink" title="父类"></a>父类</h3><pre><code class="bash">public class Father {
+    public <span class="function"><span class="title">Father</span></span>() {
+        System.out.println(<span class="string">"father"</span>);
+    }
+    {
+        System.out.println(<span class="string">"father class method block! 1  "</span>);
+    }
+    static {
+        System.out.println(<span class="string">"father class static method block!"</span>);
+    }
+    {
+        System.out.println(<span class="string">"father class method block! 2    "</span>);
+    }
+    public static void <span class="function"><span class="title">test</span></span>() {
+        System.out.println(<span class="string">"Father!"</span>);
+    }
+}
+</code></pre>
+<h3 id="子类"><a href="#子类" class="headerlink" title="子类"></a>子类</h3><pre><code class="bash">public class Son extends Father implements Cloneable, Serializable{
+    {
+        System.out.println(<span class="string">"son class method block! 1  "</span>);
+    }
+    static {
+        System.out.println(<span class="string">"son class static method block!"</span>);
+    }
+    {
+        System.out.println(<span class="string">"son class method block! 2    "</span>);
+    }
+    public <span class="function"><span class="title">Son</span></span>() {
+        super();
+        System.out.println(<span class="string">"Son!"</span>);
     }
 
-    public Object clone() {
+    public static void <span class="function"><span class="title">test</span></span>() {
+        System.out.println(<span class="string">"Son!"</span>);
+    }
+
+    public Object <span class="function"><span class="title">clone</span></span>() {
         Object object = null;
         try {
             object = super.clone();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
-        return object;
+        <span class="built_in">return</span> object;
 
     }
 }
-</code></pre><p>``` bash</p>
-<h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3><p><code>bash
-    public class Test {
-        public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException, IOException {
-          //  Father father = new Father();
-    //        Son son = new Son();
-            //第二种:使用Class类的newInstance方法 调用的是无参的构造函数
-           // Son son = (Son)Class.forName(&quot;com.feng.Son&quot;).newInstance();
-            //Son son1 = Son.class.newInstance();//结果与上面是相同的
-            //第三种：使用Constructor类的newInstance方法
-            //此方法和Class类的newInstace方法很像，但是此方法可以调用有参的和私有的构造函数
-            Constructor&lt;Son&gt; constructor = Son.class.getConstructor();
-            Son son2 = constructor.newInstance();
-            //第四种：使用clone方法
-            //当我们调用一个对象的clone方法，jvm就会创建一个新的对象，将前面对象的内容全部拷贝进去。
-            //使用clone方法创建对象并不会调用构造函数。
-            //要想使用clone方法，先实现Cloneable接口并实现其定义的clone方法
-            //Son son3 = (Son)son2.clone();
-            //第五种：使用反序列化
-            //当我们序列化和反序列化一个对象，jvm会给我们创建一个单独的对象。
-            //在反序列化时，jvm创建对象并不会调用任何构造函数。
-            //为了反序化一个对象，要让类实现Senalizable接口.
-            //如果父类未实现序列化接口，则反序列化出的对象会再次调用父类的构造函数来完成属于父类的那部分内容的初始化。
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(&quot;data.obj&quot;));
-            out.writeObject(son2);
-            out.close();
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream(&quot;data.obj&quot;));
-            Son son3 = (Son)in.readObject();
-            in.close();
-        }
-    }</code> bash</p>
+</code></pre>
+<h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3><pre><code class="bash">public class Test {
+    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException, IOException {
+      //  Father father = new Father();
+//        Son son = new Son();
+        //第二种:使用Class类的newInstance方法 调用的是无参的构造函数
+       // Son son = (Son)Class.forName(<span class="string">"com.feng.Son"</span>).newInstance();
+        //Son son1 = Son.class.newInstance();//结果与上面是相同的
+        //第三种：使用Constructor类的newInstance方法
+        //此方法和Class类的newInstace方法很像，但是此方法可以调用有参的和私有的构造函数
+        Constructor&lt;Son&gt; constructor = Son.class.getConstructor();
+        Son son2 = constructor.newInstance();
+        //第四种：使用<span class="built_in">clone</span>方法
+        //当我们调用一个对象的<span class="built_in">clone</span>方法，jvm就会创建一个新的对象，将前面对象的内容全部拷贝进去。
+        //使用<span class="built_in">clone</span>方法创建对象并不会调用构造函数。
+        //要想使用<span class="built_in">clone</span>方法，先实现Cloneable接口并实现其定义的<span class="built_in">clone</span>方法
+        //Son son3 = (Son)son2.clone();
+        //第五种：使用反序列化
+        //当我们序列化和反序列化一个对象，jvm会给我们创建一个单独的对象。
+        //在反序列化时，jvm创建对象并不会调用任何构造函数。
+        //为了反序化一个对象，要让类实现Senalizable接口.
+        //如果父类未实现序列化接口，则反序列化出的对象会再次调用父类的构造函数来完成属于父类的那部分内容的初始化。
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(<span class="string">"data.obj"</span>));
+        out.writeObject(son2);
+        out.close();
+        ObjectInputStream <span class="keyword">in</span> = new ObjectInputStream(new FileInputStream(<span class="string">"data.obj"</span>));
+        Son son3 = (Son)in.readObject();
+        in.close();
+    }
+}
+</code></pre>
 
           
         
