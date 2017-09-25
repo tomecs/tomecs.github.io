@@ -69,16 +69,17 @@
 
 
 
-<meta name="description" content="热爱生活，喜爱阳光。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="冯小石">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="题目123456You are given a string, s, and a list of words, words, that are all of the same length. Find all starting indices of substring(s) in s that is a concatenation of each word in words exactly onc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单词连接算法">
+<meta property="og:url" content="http://yoursite.com/2017/09/25/单词连接/index.html">
 <meta property="og:site_name" content="冯小石">
-<meta property="og:description" content="热爱生活，喜爱阳光。">
+<meta property="og:description" content="题目123456You are given a string, s, and a list of words, words, that are all of the same length. Find all starting indices of substring(s) in s that is a concatenation of each word in words exactly onc">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2017-09-25T01:52:35.955Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="冯小石">
-<meta name="twitter:description" content="热爱生活，喜爱阳光。">
+<meta name="twitter:title" content="单词连接算法">
+<meta name="twitter:description" content="题目123456You are given a string, s, and a list of words, words, that are all of the same length. Find all starting indices of substring(s) in s that is a concatenation of each word in words exactly onc">
 
 
 
@@ -108,13 +109,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/25/单词连接/"/>
 
 
 
 
 
-  <title>冯小石</title>
+  <title>单词连接算法 | 冯小石</title>
   
 
 
@@ -133,8 +134,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -207,9 +207,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -239,9 +239,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/25/单词连接/" itemprop="url">单词连接算法</a></h1>
+          <h1 class="post-title" itemprop="name headline">单词连接算法</h1>
         
 
         <div class="post-meta">
@@ -291,15 +289,11 @@
       
 
       
-        
-          
-            <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">You are given a string, s, and a list of words, words, that are all of the same length. Find all starting indices of substring(s) <span class="keyword">in</span> s that is a concatenation of each word <span class="keyword">in</span> words exactly once and without any intervening characters.</div><div class="line">For example, given:</div><div class="line">s: <span class="string">"barfoothefoobarman"</span></div><div class="line">words: [<span class="string">"foo"</span>, <span class="string">"bar"</span>]</div><div class="line">You should <span class="built_in">return</span> the indices: [0,9].</div><div class="line">(order does not matter).</div></pre></td></tr></table></figure>
+        <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">You are given a string, s, and a list of words, words, that are all of the same length. Find all starting indices of substring(s) <span class="keyword">in</span> s that is a concatenation of each word <span class="keyword">in</span> words exactly once and without any intervening characters.</div><div class="line">For example, given:</div><div class="line">s: <span class="string">"barfoothefoobarman"</span></div><div class="line">words: [<span class="string">"foo"</span>, <span class="string">"bar"</span>]</div><div class="line">You should <span class="built_in">return</span> the indices: [0,9].</div><div class="line">(order does not matter).</div></pre></td></tr></table></figure>
 <h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><h2 id="c-做法："><a href="#c-做法：" class="headerlink" title="c++做法："></a>c++做法：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public int minDistance(string word1,string word2)&#123;</div><div class="line">    int m=word1.length(),n=word2.length();</div><div class="line">    vector&lt;vector&lt;int&gt; &gt; ds(m+1,vector&lt;int&gt;(n+1,0));</div><div class="line">    <span class="keyword">for</span>(int i=0; i&lt;=m; i++)&#123;</div><div class="line">        ds[i][0] = i;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(int j=0; j&lt;=n; j++)&#123;</div><div class="line">        ds[0][j] = j;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(int i=1; i&lt;=m; i++)&#123;</div><div class="line">        <span class="keyword">for</span>(int j=1; j&lt;=n; j++)&#123;</div><div class="line">            <span class="keyword">if</span>(word1[i-1]==word2[j-1])&#123;</div><div class="line">                ds[i][j] = ds[i-1][j-1];</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                ds[i][j] = min(ds[i-1][j-1],min(ds[i-1][j],ds[i][j-1]))+1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> ds[m][n];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="简化后的版本："><a href="#简化后的版本：" class="headerlink" title="简化后的版本："></a>简化后的版本：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public int minDistance(string word1,string word2)&#123;</div><div class="line">    int m=word1.length(),n=word2.length();</div><div class="line">    vector&lt;int&gt; cur(m+1,0);</div><div class="line">    <span class="keyword">for</span>(int i=0; i&lt;=m; i++)&#123;</div><div class="line">        cur[i] = i;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(int j=1; j&lt;=n; j++)&#123;</div><div class="line">        int pre = cur[0];</div><div class="line">        cur[0] = j;</div><div class="line">        <span class="keyword">for</span>(int i=1; i&lt;=m; i++)&#123;</div><div class="line">            int temp = cur[i];</div><div class="line">            <span class="keyword">if</span>(word1[i-1]==word2[j-1])&#123;</div><div class="line">                cur[i] = pre;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                cur[i] = min(cur[i-1],min(cur[i],pre))+1;</div><div class="line">            &#125;</div><div class="line">            pre = temp;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> cur[m];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="java版本："><a href="#java版本：" class="headerlink" title="java版本："></a>java版本：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public int minDistance(String word1, String word2) &#123;</div><div class="line">    int m=word1.length();</div><div class="line">    int n=word2.length();</div><div class="line">    <span class="keyword">if</span>(word1.equals(word2))&#123;</div><div class="line">        <span class="built_in">return</span> 0;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(m==0||n==0)&#123;</div><div class="line">        <span class="built_in">return</span> Math.abs(m-n);</div><div class="line">    &#125;</div><div class="line">    int[][] ds = new int[m+1][n+1];</div><div class="line">    <span class="keyword">for</span>(int i=0; i&lt;=m; i++)&#123;</div><div class="line">        ds[i][0] = i;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(int j=0; j&lt;=n; j++)&#123;</div><div class="line">        ds[0][j] = j;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(int i=1; i&lt;=m; i++)&#123;</div><div class="line">        <span class="keyword">for</span>(int j=1; j&lt;=n; j++)&#123;</div><div class="line">            <span class="keyword">if</span>(word1.charAt(i-1)==word2.charAt(j-1))&#123;</div><div class="line">                ds[i][j] = ds[i-1][j-1];</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                ds[i][j] = Math.min(ds[i][j-1],Math.min(ds[i-1][j-1],ds[i-1][j]))+1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> ds[m][n];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
-          
-        
       
     </div>
     
@@ -316,210 +310,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/22/对象创建的5种方式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaoshi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="冯小石">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/22/对象创建的5种方式/" itemprop="url">对象创建的5种方式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-22T15:22:35+08:00">
-                2017-09-22
-              </time>
+              <a href="/2017/09/22/对象创建的5种方式/" rel="next" title="对象创建的5种方式">
+                <i class="fa fa-chevron-left"></i> 对象创建的5种方式
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h3 id="父类"><a href="#父类" class="headerlink" title="父类"></a>父类</h3><pre><code class="bash">public class Father {
-    public <span class="function"><span class="title">Father</span></span>() {
-        System.out.println(<span class="string">"father"</span>);
-    }
-    {
-        System.out.println(<span class="string">"father class method block! 1  "</span>);
-    }
-    static {
-        System.out.println(<span class="string">"father class static method block!"</span>);
-    }
-    {
-        System.out.println(<span class="string">"father class method block! 2    "</span>);
-    }
-    public static void <span class="function"><span class="title">test</span></span>() {
-        System.out.println(<span class="string">"Father!"</span>);
-    }
-}
-</code></pre>
-<h3 id="子类"><a href="#子类" class="headerlink" title="子类"></a>子类</h3><pre><code class="bash">public class Son extends Father implements Cloneable, Serializable{
-    {
-        System.out.println(<span class="string">"son class method block! 1  "</span>);
-    }
-    static {
-        System.out.println(<span class="string">"son class static method block!"</span>);
-    }
-    {
-        System.out.println(<span class="string">"son class method block! 2    "</span>);
-    }
-    public <span class="function"><span class="title">Son</span></span>() {
-        super();
-        System.out.println(<span class="string">"Son!"</span>);
-    }
-
-    public static void <span class="function"><span class="title">test</span></span>() {
-        System.out.println(<span class="string">"Son!"</span>);
-    }
-
-    public Object <span class="function"><span class="title">clone</span></span>() {
-        Object object = null;
-        try {
-            object = super.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-        <span class="built_in">return</span> object;
-
-    }
-}
-</code></pre>
-<h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3><pre><code class="bash">public class Test {
-    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException, IOException {
-      //  Father father = new Father();
-//        Son son = new Son();
-        //第二种:使用Class类的newInstance方法 调用的是无参的构造函数
-       // Son son = (Son)Class.forName(<span class="string">"com.feng.Son"</span>).newInstance();
-        //Son son1 = Son.class.newInstance();//结果与上面是相同的
-        //第三种：使用Constructor类的newInstance方法
-        //此方法和Class类的newInstace方法很像，但是此方法可以调用有参的和私有的构造函数
-        Constructor&lt;Son&gt; constructor = Son.class.getConstructor();
-        Son son2 = constructor.newInstance();
-        //第四种：使用<span class="built_in">clone</span>方法
-        //当我们调用一个对象的<span class="built_in">clone</span>方法，jvm就会创建一个新的对象，将前面对象的内容全部拷贝进去。
-        //使用<span class="built_in">clone</span>方法创建对象并不会调用构造函数。
-        //要想使用<span class="built_in">clone</span>方法，先实现Cloneable接口并实现其定义的<span class="built_in">clone</span>方法
-        //Son son3 = (Son)son2.clone();
-        //第五种：使用反序列化
-        //当我们序列化和反序列化一个对象，jvm会给我们创建一个单独的对象。
-        //在反序列化时，jvm创建对象并不会调用任何构造函数。
-        //为了反序化一个对象，要让类实现Senalizable接口.
-        //如果父类未实现序列化接口，则反序列化出的对象会再次调用父类的构造函数来完成属于父类的那部分内容的初始化。
-        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(<span class="string">"data.obj"</span>));
-        out.writeObject(son2);
-        out.close();
-        ObjectInputStream <span class="keyword">in</span> = new ObjectInputStream(new FileInputStream(<span class="string">"data.obj"</span>));
-        Son son3 = (Son)in.readObject();
-        in.close();
-    }
-}
-</code></pre>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -529,134 +341,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/22/TEA加密算法详解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xiaoshi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="冯小石">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/22/TEA加密算法详解/" itemprop="url">TEA加密算法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-22T12:09:00+08:00">
-                2017-09-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="TEA加密算法运用loop-8次来实现16轮加密。"><a href="#TEA加密算法运用loop-8次来实现16轮加密。" class="headerlink" title="TEA加密算法运用loop 8次来实现16轮加密。"></a>TEA加密算法运用loop 8次来实现16轮加密。</h3><p>其中delta 的求得是个常值。</p>
-<h3 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/* tale 64 bits of date <span class="keyword">in</span> v]0] and v[1] and 128bits of key[0] - key[4] */</div><div class="line">void encipher(unsigned int v[2], unsigned int key[4]) &#123;</div><div class="line">	unsigned int v0 = v[0],v1 = v[1], i, sum = 0, delta=0x9E3779B9;</div><div class="line">	<span class="keyword">for</span>(i=0; i &lt; 32; i++)&#123;</div><div class="line">		v0 += (((v1 &lt;&lt; 4) ^ (v1 &gt;&gt;5))+v1) ^ (sum + key[sum &amp; 3]);</div><div class="line">		sum += delta;</div><div class="line">		v1 += (((v0 &lt;&lt; 4) ^ (v0 &gt;&gt; 5)) + v0) ^ (sum + key[(sum&gt;&gt;11 ) &amp; 3]);</div><div class="line">	&#125;</div><div class="line">	v[0] = v0;</div><div class="line">	v[1] = v1;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<h3 id="解密算法"><a href="#解密算法" class="headerlink" title="解密算法"></a>解密算法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#define num_rounds 32</span></div><div class="line">void decipher(unsigned int v[2] , unsigned int key[4])&#123;</div><div class="line">	 unsigned int i;</div><div class="line">	 unsigned int v0=v[0], v1=v[1], delta=0x9E3779B9, sum=delta*num_rounds;</div><div class="line">	 <span class="keyword">for</span>(i=0; i&lt;num_rounds; i++)&#123;</div><div class="line">			   v1 -= (((v0 &lt;&lt; 4) ^ (v0 &gt;&gt; 5)) + v0) ^ (sum + key[(sum&gt;&gt;11 ) &amp; 3]);</div><div class="line">			   sum -= delta;</div><div class="line">			   v0 += (((v1 &lt;&lt; 4) ^ (v1 &gt;&gt;5))+v1) ^ (sum + key[sum &amp; 3]);</div><div class="line">	 &#125;</div><div class="line">	v[0] = v0;</div><div class="line">	v[1] = v1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="主函数"><a href="#主函数" class="headerlink" title="主函数"></a>主函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">int main(int argc,char * argv[])&#123;</div><div class="line">	 <span class="keyword">if</span>(argc!=5)&#123;</div><div class="line">		  cout&lt;&lt;<span class="string">"message----!"</span>&lt;&lt;endl;</div><div class="line">	  &#125;</div><div class="line">	 char password[1000] = &#123;0&#125;;</div><div class="line">	 FILE *fpin = fopen(argv[3],<span class="string">"rb"</span>);</div><div class="line">	 FILE *fpout = fopen(argv[4],<span class="string">"wb"</span>);</div><div class="line">	 strcpy(password,argv[2]);</div><div class="line">	 <span class="keyword">if</span>(fpin!=null &amp;&amp; fpout!=null)&#123;</div><div class="line">			  <span class="keyword">while</span>(!foef(fpin))&#123;</div><div class="line">					unsigned int msg[2];</div><div class="line">					msg[0] = msg[1] = 0;</div><div class="line">					<span class="keyword">if</span>((fread(msg,1,8,fpin)) == 0) <span class="built_in">break</span>;</div><div class="line">					<span class="keyword">if</span>(argv[1][0] == <span class="string">'e'</span>)</div><div class="line">						 encipher(msg,(unsigned int*)password);</div><div class="line">					<span class="keyword">else</span></div><div class="line">						  decipher(msg,(unsigned int*)password);</div><div class="line">					fwrite(msg,1,8,fpout);</div><div class="line">	&#125;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>此加密算法的保密性和安全性系数较高。<br>TEA算法使用64位的明文分组和128位的密钥，它使用Feistel分组加密框架，需要进行 64 轮迭代。TEA加密算法不但比较简单，而且有很强的抗差分分析能力，加密速度也比较快。<br>既简单又很难破解</p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -664,6 +353,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -684,8 +377,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <p class="site-author-name" itemprop="name">xiaoshi</p>
@@ -728,6 +430,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决办法"><span class="nav-number">2.</span> <span class="nav-text">解决办法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c-做法："><span class="nav-number"></span> <span class="nav-text">c++做法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简化后的版本："><span class="nav-number"></span> <span class="nav-text">简化后的版本：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java版本："><span class="nav-number"></span> <span class="nav-text">java版本：</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
